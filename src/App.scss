@@ -12,6 +12,20 @@ body {
   flex-direction: column;
   max-width: 1000px;
   width: 100%;
+  .watermark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    a {
+      display: inline-block;
+      img {
+        height: 45px;
+        &.round-left-bottom {
+          border-bottom-left-radius: 20px;
+        }
+      }
+    }
+  }
   .summary {
     display: flex;
     justify-content: center;
@@ -50,7 +64,7 @@ body {
         font-size: 1.5em;
         gap: 5px;
         font-weight: bold;
-        &.big  {
+        &.big {
           font-size: 3em;
         }
         .font-small {
