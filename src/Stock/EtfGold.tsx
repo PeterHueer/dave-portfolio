@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Hero from "./Hero";
+import Hero from "../UI/Hero";
 import { StockData, useGetStockData } from "./ParqetLoader";
-import PerfomanceTile from "./PerfomanceTile/PerfomanceTile";
-import ProgressSpinner from "./ProgressSpinner";
+import PerfomanceTile from "./PerfomanceTile";
+import ProgressSpinner from "../UI/ProgressSpinner";
 
 export default function EtfGold(props: { onSum: (sum: number) => void }) {
   const { data } = useGetStockData();

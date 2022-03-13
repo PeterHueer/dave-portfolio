@@ -1,9 +1,9 @@
 import "./App.scss";
-import EtfGold from "./EtfGold";
-import Crypto from "./Crypto";
+import EtfGold from "./Stock/EtfGold";
+import Crypto from "./Crypto/Crypto";
 import { useState } from "react";
-import Summary from "./Summary";
-import WaterMark from "./WaterMark";
+import Summary from "./Summary/Summary";
+import WaterMark from "./UI/WaterMark";
 
 function App() {
   const [total, setTotal] = useState(0);

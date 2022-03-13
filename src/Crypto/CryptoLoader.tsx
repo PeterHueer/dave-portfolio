@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import btcLogo from "./assets/btc.png";
-import ethLogo from "./assets/eth.png";
+import btcLogo from "../assets/btc.png";
+import ethLogo from "../assets/eth.png";
 
 export interface CryptoItem {
   spent: number;

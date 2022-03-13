@@ -1,23 +1,20 @@
-import { StockItem } from "../ParqetLoader";
-
+import { StockItem } from "./ParqetLoader";
 import classNames from "classnames";
-import { CryptoItem } from "../CryptoLoader";
-import { useEffect } from "react";
 
-export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum: (sum: number) => void }) {
-  const { logo, value, id, name, purchaseValue, spent } = props.crypto;
+export default function PerfomanceTile(props: {
+  stock: StockItem;
+  fallbackLogo: string;
+}) {
+  const {
+    gainGross,
+    value,
+    purchaseValue
+  } = props.stock.performance;
+  const { isin, logo, name } = props.stock.security;
 
   const formatToCurrency = (value: number) => {
     return `${(Math.round(value * 100) / 100).toLocaleString()} €`;
   };
-
-  const calculatePercentage = (value: number, purchaseValue: number) => {
-    return (value - purchaseValue) / value * 100;
-  };
-
-  useEffect(() => {
-      props.onSum(spent * ((calculatePercentage(value, purchaseValue) / 100)));
-  }, [crypto])
 
   return (
     <div className="card">
@@ -28,12 +25,12 @@ export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum:
         <div className="media">
           <div className="media-left">
             <figure className="image is-48x48">
-              <img src={logo} alt="Placeholder image" />
+              <img src={logo ?? props.fallbackLogo} alt="Placeholder image" />
             </figure>
           </div>
           <div className="media-content">
             <p className="title is-6">{name}</p>
-            <p className="subtitle is-6">{id.toUpperCase()}</p>
+            <p className="subtitle is-6">ISIN: {isin}</p>
           </div>
         </div>
 
@@ -41,24 +38,21 @@ export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum:
           <div className="stock-data">
             <div className="pricing">
               <span className="stock-title tag">Einkauf:</span>
-              <span>{spent.toLocaleString()}€</span>
+              <span>{purchaseValue.toLocaleString()}€</span>
             </div>
             <div className="pricing">
               <span className="stock-title tag">Aktuell:</span>
-              <span>{formatToCurrency(spent + spent * ((calculatePercentage(value, purchaseValue) / 100)))}</span>
+              <span>{props.stock.position.currentValue.toLocaleString()}€</span>
             </div>
           </div>
           <div className="performance">
             <span
               className={classNames({
                 "is-success": value > purchaseValue,
-                "is-danger": purchaseValue > value,
+                "is-danger": purchaseValue > value
               })}
             >
-              {formatToCurrency(spent * ((calculatePercentage(value, purchaseValue) / 100)))}{" "}
-              <div className="font-small">
-                ({calculatePercentage(value, purchaseValue).toLocaleString()}%)
-              </div>
+              {formatToCurrency(gainGross)} <div className="font-small">({(value * 100 / purchaseValue - 100).toLocaleString()}%)</div>
             </span>
           </div>
         </div>

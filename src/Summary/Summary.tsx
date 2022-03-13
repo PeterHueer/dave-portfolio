@@ -1,7 +1,6 @@
 import classNames from "classnames";
-import React from "react";
-import Hero from "./Hero";
-import profil from './assets/profil.jpg';
+import Hero from "../UI/Hero";
+import profil from '../assets/profil.jpg';
 
 export default function Summary(props: { total: number }) {
   const { total } = props;

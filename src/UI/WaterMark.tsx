@@ -1,6 +1,5 @@
-import React from "react";
-import coinbase from "./assets/coinbase.png";
-import parqet from "./assets/parqet.png";
+import coinbase from "../assets/coinbase.png";
+import parqet from "../assets/parqet.png";
 
 export default function WaterMark() {
   return (

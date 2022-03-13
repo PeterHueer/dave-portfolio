@@ -1,8 +1,7 @@
 import { useLoadCrypto } from "./CryptoLoader";
-import Hero from "./Hero";
-import CryptoPerfomanceTile from "./PerfomanceTile/CryptoPerfomanceTile";
-import ProgressSpinner from "./ProgressSpinner";
-import "./App.scss";
+import Hero from "../UI/Hero";
+import CryptoPerfomanceTile from "./CryptoPerfomanceTile";
+import ProgressSpinner from "../UI/ProgressSpinner";
 import { useEffect, useState } from "react";
 
 export default function Crypto(props: {
