@@ -1,0 +1,75 @@
+@import "../node_modules/bulma/bulma.sass";
+
+html {
+  overflow: auto;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  width: 100%;
+  .summary {
+    display: flex;
+    justify-content: center;
+  }
+  .performance-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    .card {
+      flex: 1;
+      .stock-data {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+        .pricing {
+          display: flex;
+          gap: 5px;
+        }
+      }
+      .stock-title {
+        font-weight: bold;
+        span {
+          gap: 5px;
+        }
+      }
+      .is-danger {
+        color: $red;
+      }
+      .is-success {
+        color: $success;
+      }
+      .performance {
+        display: flex;
+        justify-content: center;
+        font-size: 1.5em;
+        gap: 5px;
+        font-weight: bold;
+        &.big  {
+          font-size: 3em;
+        }
+        .font-small {
+          text-align: center;
+          font-size: 0.6em;
+        }
+      }
+    }
+  }
+  .progress-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    .progress {
+      width: 30vw;
+    }
+  }
+}
+.is-flexwrap {
+  flex-wrap: wrap;
+}
