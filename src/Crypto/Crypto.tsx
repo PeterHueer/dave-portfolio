@@ -4,18 +4,15 @@ import CryptoPerfomanceTile from "./CryptoPerfomanceTile";
 import ProgressSpinner from "../UI/ProgressSpinner";
 import { useEffect, useState } from "react";
 
-export default function Crypto(props: {
-  onSum: (sum: number) => void;
-}) {
+export default function Crypto(props: { onSum: (sum: number) => void }) {
   const { btc, eth } = useLoadCrypto();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-      props.onSum(total);
-  }, [total])
+    props.onSum(total);
+  }, [total]);
 
-
-  return btc && eth ? (
+  return (
     <Hero title="Krypto">
       <CryptoPerfomanceTile
         crypto={btc}
@@ -26,7 +23,5 @@ export default function Crypto(props: {
         onSum={(sum) => setTotal((prev) => prev + sum)}
       ></CryptoPerfomanceTile>
     </Hero>
-  ) : (
-    <ProgressSpinner />
   );
 }

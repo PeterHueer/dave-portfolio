@@ -3,8 +3,16 @@ import { StockItem } from "../Stock/ParqetLoader";
 import classNames from "classnames";
 import { CryptoItem } from "./CryptoLoader";
 import { useEffect } from "react";
+import ProgressSpinner from "../UI/ProgressSpinner";
 
-export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum: (sum: number) => void }) {
+export default function CryptoPerfomanceTile(props: {
+  crypto?: CryptoItem;
+  onSum: (sum: number) => void;
+}) {
+  if (props.crypto === undefined) {
+    return <ProgressSpinner height={200} />;
+  }
+
   const { logo, value, id, name, purchaseValue, spent } = props.crypto;
 
   const formatToCurrency = (value: number) => {
@@ -12,12 +20,12 @@ export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum:
   };
 
   const calculatePercentage = (value: number, purchaseValue: number) => {
-    return (value - purchaseValue) / value * 100;
+    return ((value - purchaseValue) / value) * 100;
   };
 
   useEffect(() => {
-      props.onSum(spent * ((calculatePercentage(value, purchaseValue) / 100)));
-  }, [crypto])
+    props.onSum(spent * (calculatePercentage(value, purchaseValue) / 100));
+  }, [crypto]);
 
   return (
     <div className="card">
@@ -45,7 +53,12 @@ export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum:
             </div>
             <div className="pricing">
               <span className="stock-title tag">Aktuell:</span>
-              <span>{formatToCurrency(spent + spent * ((calculatePercentage(value, purchaseValue) / 100)))}</span>
+              <span>
+                {formatToCurrency(
+                  spent +
+                    spent * (calculatePercentage(value, purchaseValue) / 100)
+                )}
+              </span>
             </div>
           </div>
           <div className="performance">
@@ -55,7 +68,9 @@ export default function CryptoPerfomanceTile(props: { crypto: CryptoItem, onSum:
                 "is-danger": purchaseValue > value,
               })}
             >
-              {formatToCurrency(spent * ((calculatePercentage(value, purchaseValue) / 100)))}{" "}
+              {formatToCurrency(
+                spent * (calculatePercentage(value, purchaseValue) / 100)
+              )}{" "}
               <div className="font-small">
                 ({calculatePercentage(value, purchaseValue).toLocaleString()}%)
               </div>

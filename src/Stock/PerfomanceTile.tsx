@@ -1,5 +1,6 @@
 import { StockItem } from "./ParqetLoader";
 import classNames from "classnames";
+import ProgressSpinner from "../UI/ProgressSpinner";
 
 export default function PerfomanceTile(props: {
   stock: StockItem;
@@ -10,6 +11,12 @@ export default function PerfomanceTile(props: {
     value,
     purchaseValue
   } = props.stock.performance;
+
+  if (props.stock === undefined) {
+    return <ProgressSpinner height={100} />;
+  }
+
+
   const { isin, logo, name } = props.stock.security;
 
   const formatToCurrency = (value: number) => {
