@@ -12,6 +12,22 @@ body {
   flex-direction: column;
   max-width: 1000px;
   width: 100%;
+  .making-of {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+
+    @media only screen and (max-width: 650px) {
+      i {
+        display: none;
+      }
+    }
+
+    .youtube {
+      height: 50px;
+    }
+  }
   .watermark {
     position: absolute;
     top: 0;
@@ -86,4 +102,8 @@ body {
 }
 .is-flexwrap {
   flex-wrap: wrap;
+}
+
+.hero-body {
+  padding: 1.5rem;
 }
