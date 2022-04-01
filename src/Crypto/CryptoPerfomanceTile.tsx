@@ -1,8 +1,5 @@
-import { StockItem } from "../Stock/ParqetLoader";
-
 import classNames from "classnames";
 import { CryptoItem } from "./CryptoLoader";
-import { useEffect } from "react";
 import ProgressSpinner from "../UI/ProgressSpinner";
 import { calculatePercentage } from "./Crypto";
 

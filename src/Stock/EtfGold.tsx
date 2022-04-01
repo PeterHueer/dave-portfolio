@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Hero from "../UI/Hero";
-import { StockData, useGetStockData } from "./ParqetLoader";
+import { useGetStockData } from "./ParqetLoader";
 import PerfomanceTile from "./PerfomanceTile";
 import ProgressSpinner from "../UI/ProgressSpinner";
 
