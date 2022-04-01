@@ -4,28 +4,18 @@ import classNames from "classnames";
 import { CryptoItem } from "./CryptoLoader";
 import { useEffect } from "react";
 import ProgressSpinner from "../UI/ProgressSpinner";
+import { calculatePercentage } from "./Crypto";
 
-export default function CryptoPerfomanceTile(props: {
-  crypto?: CryptoItem;
-  onSum: (sum: number) => void;
-}) {
+const formatToCurrency = (value: number) => {
+  return `${(Math.round(value * 100) / 100).toLocaleString()} €`;
+};
+
+export default function CryptoPerfomanceTile(props: { crypto?: CryptoItem }) {
   if (props.crypto === undefined) {
     return <ProgressSpinner height={200} />;
   }
 
   const { logo, value, id, name, purchaseValue, spent } = props.crypto;
-
-  const formatToCurrency = (value: number) => {
-    return `${(Math.round(value * 100) / 100).toLocaleString()} €`;
-  };
-
-  const calculatePercentage = (value: number, purchaseValue: number) => {
-    return ((value - purchaseValue) / value) * 100;
-  };
-
-  useEffect(() => {
-    props.onSum(spent * (calculatePercentage(value, purchaseValue) / 100));
-  }, [crypto]);
 
   return (
     <div className="card">

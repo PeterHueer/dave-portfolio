@@ -2,6 +2,8 @@ import classNames from "classnames";
 import Hero from "../UI/Hero";
 import profil from "../assets/profil.jpg";
 import CountUp from "react-countup";
+import { useState } from "react";
+import { useEffect } from "react";
 
 // Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.
 const dollarEyes = (
@@ -10,13 +12,23 @@ const dollarEyes = (
   </svg>
 );
 
-export default function Summary(props: { total: number }) {
-  const { total } = props;
+export default function Summary(props: {
+  totalCrypto: number;
+  totalStock: number;
+}) {
+  const [total, setTotal] = useState(0);
+  const { totalCrypto, totalStock } = props;
   const invested = 40000;
 
   const formatToCurrency = (value: number) => {
     return Math.round(value * 100) / 100;
   };
+
+  useEffect(() => {
+    if(totalCrypto && totalStock) {
+      setTotal(totalCrypto + totalStock);
+    }
+  }, [totalCrypto, totalStock])
 
   return (
     <Hero title="Aktueller Gesamtwert">
@@ -34,12 +46,8 @@ export default function Summary(props: { total: number }) {
                   alt="Placeholder image"
                 />
                 <div className="dollar-eye-wrapper">
-                  <div className="eye">
-                  {dollarEyes}
-                  </div>
-                  <div className="eye">
-                  {dollarEyes}
-                  </div>
+                  <div className="eye">{dollarEyes}</div>
+                  <div className="eye">{dollarEyes}</div>
                 </div>
               </figure>
             </div>

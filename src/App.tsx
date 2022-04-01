@@ -16,7 +16,8 @@ function deleteCookies() {
 
 
 function App() {
-  const [total, setTotal] = useState(0);
+  const [totalStock, setTotalStock] = useState(0);
+  const [totalCrypto, setTotalCrypto] = useState(0);
   deleteCookies();
 
   return (
@@ -34,9 +35,9 @@ function App() {
         </a>
         <WaterMark />
       </div>
-      <Summary total={total} />
-      <EtfGold onSum={(sum) => setTotal((prev) => prev + sum)} />
-      <Crypto onSum={(sum) => setTotal((prev) => prev + sum)} />
+      <Summary totalCrypto={totalCrypto} totalStock={totalStock} />
+      <EtfGold onSum={setTotalStock} />
+      <Crypto onSum={setTotalCrypto} />
     </div>
   );
 }

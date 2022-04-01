@@ -1,26 +1,30 @@
 import { useLoadCrypto } from "./CryptoLoader";
 import Hero from "../UI/Hero";
 import CryptoPerfomanceTile from "./CryptoPerfomanceTile";
-import ProgressSpinner from "../UI/ProgressSpinner";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+
+export const calculatePercentage = (value: number, purchaseValue: number) => {
+  return ((value - purchaseValue) / value) * 100;
+};
+
 
 export default function Crypto(props: { onSum: (sum: number) => void }) {
   const { btc, eth } = useLoadCrypto();
-  const [total, setTotal] = useState(0);
-
   useEffect(() => {
-    props.onSum(total);
-  }, [total]);
+    if (btc && eth) {
+      const btcTotal = btc.spent * (calculatePercentage(btc.value, btc.purchaseValue) / 100);
+      const ethTotal = btc.spent * (calculatePercentage(eth.value, eth.purchaseValue) / 100);
+      props.onSum(btcTotal + ethTotal);
+    }
+  }, [btc, eth]);
 
   return (
     <Hero title="Krypto">
       <CryptoPerfomanceTile
         crypto={btc}
-        onSum={(sum) => setTotal((prev) => prev + sum)}
       ></CryptoPerfomanceTile>
       <CryptoPerfomanceTile
         crypto={eth}
-        onSum={(sum) => setTotal((prev) => prev + sum)}
       ></CryptoPerfomanceTile>
     </Hero>
   );
