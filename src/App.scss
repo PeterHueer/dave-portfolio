@@ -136,6 +136,22 @@ body {
     }
   }
 }
+.imprint-page {
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+.imprint {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
 
 @keyframes bouncing {
 	0% {
