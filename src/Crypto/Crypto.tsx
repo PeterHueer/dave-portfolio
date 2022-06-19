@@ -4,16 +4,17 @@ import CryptoPerfomanceTile from "./CryptoPerfomanceTile";
 import { useEffect } from "react";
 
 export const calculatePercentage = (value: number, purchaseValue: number) => {
-  return ((value - purchaseValue) / value) * 100;
+  return ((value - purchaseValue) / purchaseValue) * 100;
 };
 
 
 export default function Crypto(props: { onSum: (sum: number) => void }) {
   const { btc, eth } = useLoadCrypto();
+  console.log(eth);
   useEffect(() => {
     if (btc && eth) {
       const btcTotal = btc.spent * (calculatePercentage(btc.value, btc.purchaseValue) / 100);
-      const ethTotal = btc.spent * (calculatePercentage(eth.value, eth.purchaseValue) / 100);
+      const ethTotal = eth.spent * (calculatePercentage(eth.value, eth.purchaseValue) / 100);
       props.onSum(btcTotal + ethTotal);
     }
   }, [btc, eth]);
