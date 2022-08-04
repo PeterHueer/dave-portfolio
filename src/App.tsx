@@ -43,6 +43,19 @@ function App() {
 
     return (
         <div className="app">
+                    <div className="header">
+                <a
+                    className="making-of"
+                    target="_blank"
+                    href="https://www.youtube.com/watch?v=x-cSqC5NRlE"
+                >
+                    <img className="youtube" src={logo}/>
+                    <i>
+                        Hier zum <b> Making Of </b> von der Webseite
+                    </i>
+                </a>
+                <WaterMark/>
+            </div>
             <Summary totalCrypto={totalCrypto} totalStock={totalStock}/>
             <EtfGold onSum={setTotalStock}/>
             <Crypto onSum={setTotalCrypto}/>
