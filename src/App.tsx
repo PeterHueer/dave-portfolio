@@ -1,6 +1,5 @@
 import "./App.scss";
-import EtfGold from "./Stock/EtfGold";
-import Crypto from "./Crypto/Crypto";
+import Stocks from "./Stock/Stocks";
 import {useState} from "react";
 import Summary from "./Summary/Summary";
 import WaterMark from "./UI/WaterMark";
@@ -28,7 +27,6 @@ function deleteCookies() {
 
 function App() {
     const [totalStock, setTotalStock] = useState(0);
-    const [totalCrypto, setTotalCrypto] = useState(0);
     const [showImprint, setShowImprint] = useState(false);
     deleteCookies();
 
@@ -70,9 +68,8 @@ function App() {
               </div>
                 <WaterMark/>
             </div>
-            <Summary totalCrypto={totalCrypto} totalStock={totalStock}/>
-            <EtfGold onSum={setTotalStock}/>
-            <Crypto onSum={setTotalCrypto}/>
+            <Summary totalStock={totalStock}/>
+            <Stocks onSum={setTotalStock}/>
           <div className="center">
             <Donate />
           </div>

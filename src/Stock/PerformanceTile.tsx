@@ -1,11 +1,10 @@
 import {StockItem} from "./ParqetLoader";
 import classNames from "classnames";
-import ProgressSpinner from "../UI/ProgressSpinner";
 import CountUp from "react-countup";
 
-export default function PerfomanceTile(props: {
+export default function PerformanceTile(props: {
   stock: StockItem;
-  fallbackLogo: string;
+  isCrypto: boolean;
 }) {
   const {
     gainGross,
@@ -13,16 +12,18 @@ export default function PerfomanceTile(props: {
     purchaseValue
   } = props.stock.performance;
 
-  if (props.stock === undefined) {
-    return <ProgressSpinner height={100}/>;
+  const {
+  asset: {
+    identifier
+  }, logo} = props.stock;
+
+
+  const cryptoNameResolver = (short: string) => {
+    switch (short) {
+      case "BTC": return "Bitcoin";
+      case "ETH": return "Ethereum";
+    }
   }
-
-
-  const {isin, logo, name} = props.stock.security;
-
-  const formatToCurrency = (value: number) => {
-    return `${(Math.round(value * 100) / 100).toLocaleString()} €`;
-  };
 
   return (
     <div className="card">
@@ -33,12 +34,12 @@ export default function PerfomanceTile(props: {
         <div className="media">
           <div className="media-left">
             <figure className="image is-48x48">
-              <img src={logo ?? props.fallbackLogo} alt="Placeholder image"/>
+              <img src={logo} alt="Placeholder image"/>
             </figure>
           </div>
           <div className="media-content">
-            <p className="title is-6">{name}</p>
-            <p className="subtitle is-6">ISIN: {isin}</p>
+            <p className="title is-6">{props.isCrypto ? cryptoNameResolver(identifier) : props.stock.security?.name}</p>
+            <p className="subtitle is-6">{props.isCrypto ? identifier : `ISIN: ${identifier}`}</p>
           </div>
         </div>
 

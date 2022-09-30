@@ -17,14 +17,20 @@ interface Performance {
 
 interface Security {
   name: string;
-  logo: string;
   isin: string;
+}
+
+interface Asset {
+  identifier: string;
+  assetType: string;
 }
 
 export interface StockItem {
   position: StockPosition;
-  security: Security;
+  security?: Security;
+  asset: Asset;
   performance: Performance;
+  logo: string;
 }
 
 export interface StockData {
@@ -35,7 +41,7 @@ export interface StockData {
 export const useGetStockData = () => {
   const [data, setData] = useState<StockData>();
   useEffect(() => {
-    fetch("https://api.parqet.com/v1/portfolios/622dc3d17a565e4cd92a9c1e")
+    fetch("https://api.parqet.com/v1/portfolios/63372c07a95d112cb413d2c7")
       .then((response) => {
         if (response.ok) {
           return response.json();

@@ -13,11 +13,10 @@ const dollarEyes = (
 );
 
 export default function Summary(props: {
-  totalCrypto: number;
   totalStock: number;
 }) {
   const [total, setTotal] = useState(0);
-  const { totalCrypto, totalStock } = props;
+  const { totalStock } = props;
   const invested = 30000;
 
   const formatToCurrency = (value: number) => {
@@ -25,10 +24,10 @@ export default function Summary(props: {
   };
 
   useEffect(() => {
-    if(totalCrypto && totalStock) {
-      setTotal(totalCrypto + totalStock);
+    if(totalStock) {
+      setTotal(totalStock);
     }
-  }, [totalCrypto, totalStock])
+  }, [totalStock])
 
   return (
     <Hero title="Aktueller Gesamtwert">
