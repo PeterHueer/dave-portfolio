@@ -25,9 +25,14 @@ interface Asset {
   assetType: string;
 }
 
+interface StartQuote {
+  datetime: string;
+}
+
 export interface StockItem {
   position: StockPosition;
   security?: Security;
+  startQuote: StartQuote;
   asset: Asset;
   performance: Performance;
   logo: string;

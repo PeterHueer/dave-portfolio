@@ -1,6 +1,7 @@
 import {StockItem} from "./ParqetLoader";
 import classNames from "classnames";
 import CountUp from "react-countup";
+import ReactTooltip from 'react-tooltip';
 
 export default function PerformanceTile(props: {
   stock: StockItem;
@@ -46,8 +47,9 @@ export default function PerformanceTile(props: {
         <div className="content">
           <div className="stock-data">
             <div className="pricing">
-              <span className="stock-title tag">Einkauf:</span>
+              <span data-tip={`Einzahlungsdatum: ${new Date(props.stock.startQuote.datetime).toLocaleDateString()}`} className="stock-title tag">Eingezahlt:</span>
               <span>{purchaseValue.toLocaleString()}€</span>
+              <ReactTooltip />
             </div>
             <div className="pricing">
               <span className="stock-title tag">Aktuell:</span>

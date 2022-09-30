@@ -64,6 +64,7 @@ body {
         flex-direction: row;
         gap: 10px;
         .pricing {
+          cursor: default;
           display: flex;
           gap: 5px;
         }
