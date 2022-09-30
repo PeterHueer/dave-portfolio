@@ -18,7 +18,7 @@ export default function Summary(props: {
 }) {
   const [total, setTotal] = useState(0);
   const { totalCrypto, totalStock } = props;
-  const invested = 40000;
+  const invested = 30000;
 
   const formatToCurrency = (value: number) => {
     return Math.round(value * 100) / 100;
@@ -71,7 +71,7 @@ export default function Summary(props: {
                 })}
               >
                 <CountUp
-                  start={40000}
+                  start={30000}
                   end={formatToCurrency(invested + total)}
                   duration={0.8}
                   decimal=","
