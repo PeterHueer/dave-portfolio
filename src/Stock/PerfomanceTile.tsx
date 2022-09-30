@@ -1,6 +1,7 @@
-import { StockItem } from "./ParqetLoader";
+import {StockItem} from "./ParqetLoader";
 import classNames from "classnames";
 import ProgressSpinner from "../UI/ProgressSpinner";
+import CountUp from "react-countup";
 
 export default function PerfomanceTile(props: {
   stock: StockItem;
@@ -13,11 +14,11 @@ export default function PerfomanceTile(props: {
   } = props.stock.performance;
 
   if (props.stock === undefined) {
-    return <ProgressSpinner height={100} />;
+    return <ProgressSpinner height={100}/>;
   }
 
 
-  const { isin, logo, name } = props.stock.security;
+  const {isin, logo, name} = props.stock.security;
 
   const formatToCurrency = (value: number) => {
     return `${(Math.round(value * 100) / 100).toLocaleString()} €`;
@@ -32,7 +33,7 @@ export default function PerfomanceTile(props: {
         <div className="media">
           <div className="media-left">
             <figure className="image is-48x48">
-              <img src={logo ?? props.fallbackLogo} alt="Placeholder image" />
+              <img src={logo ?? props.fallbackLogo} alt="Placeholder image"/>
             </figure>
           </div>
           <div className="media-content">
@@ -59,7 +60,22 @@ export default function PerfomanceTile(props: {
                 "is-danger": purchaseValue > value
               })}
             >
-              {formatToCurrency(gainGross)} <div className="font-small">({(value * 100 / purchaseValue - 100).toLocaleString()}%)</div>
+              <CountUp
+                duration={0.8}
+                end={gainGross}
+                decimal=","
+                decimals={2}
+                suffix=" €"
+              />
+               <div className="font-small">
+                (<CountUp
+                 duration={0.8}
+                 end={(value * 100 / purchaseValue - 100)}
+                 decimal=","
+                 decimals={2}
+                 suffix=" %"
+               />)
+            </div>
             </span>
           </div>
         </div>

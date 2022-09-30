@@ -10,7 +10,6 @@ export const calculatePercentage = (value: number, purchaseValue: number) => {
 
 export default function Crypto(props: { onSum: (sum: number) => void }) {
   const { btc, eth } = useLoadCrypto();
-  console.log(eth);
   useEffect(() => {
     if (btc && eth) {
       const btcTotal = btc.spent * (calculatePercentage(btc.value, btc.purchaseValue) / 100);

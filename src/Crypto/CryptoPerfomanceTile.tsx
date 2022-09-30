@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import { CryptoItem } from "./CryptoLoader";
+import {CryptoItem} from "./CryptoLoader";
 import ProgressSpinner from "../UI/ProgressSpinner";
-import { calculatePercentage } from "./Crypto";
+import {calculatePercentage} from "./Crypto";
+import CountUp from "react-countup";
 
 const formatToCurrency = (value: number) => {
   return `${(Math.round(value * 100) / 100).toLocaleString()} €`;
@@ -9,10 +10,10 @@ const formatToCurrency = (value: number) => {
 
 export default function CryptoPerfomanceTile(props: { crypto?: CryptoItem }) {
   if (props.crypto === undefined) {
-    return <ProgressSpinner height={200} />;
+    return <ProgressSpinner height={200}/>;
   }
 
-  const { logo, value, id, name, purchaseValue, spent } = props.crypto;
+  const {logo, value, id, name, purchaseValue, spent} = props.crypto;
 
   return (
     <div className="card">
@@ -23,7 +24,7 @@ export default function CryptoPerfomanceTile(props: { crypto?: CryptoItem }) {
         <div className="media">
           <div className="media-left">
             <figure className="image is-48x48">
-              <img src={logo} alt="Placeholder image" />
+              <img src={logo} alt="Placeholder image"/>
             </figure>
           </div>
           <div className="media-content">
@@ -43,7 +44,7 @@ export default function CryptoPerfomanceTile(props: { crypto?: CryptoItem }) {
               <span>
                 {formatToCurrency(
                   spent +
-                    spent * (calculatePercentage(value, purchaseValue) / 100)
+                  spent * (calculatePercentage(value, purchaseValue) / 100)
                 )}
               </span>
             </div>
@@ -55,11 +56,21 @@ export default function CryptoPerfomanceTile(props: { crypto?: CryptoItem }) {
                 "is-danger": purchaseValue > value,
               })}
             >
-              {formatToCurrency(
-                spent * (calculatePercentage(value, purchaseValue) / 100)
-              )}{" "}
+            <CountUp
+              duration={0.8}
+              end={spent * (calculatePercentage(value, purchaseValue) / 100)}
+              decimal=","
+              decimals={2}
+              suffix=" €"
+            />
               <div className="font-small">
-                ({calculatePercentage(value, purchaseValue).toLocaleString()}%)
+                <CountUp
+                  duration={0.8}
+                  end={calculatePercentage(value, purchaseValue)}
+                  decimal=","
+                  decimals={2}
+                  suffix=" %"
+                />
               </div>
             </span>
           </div>
