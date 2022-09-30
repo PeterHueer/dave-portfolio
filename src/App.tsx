@@ -5,7 +5,18 @@ import {useState} from "react";
 import Summary from "./Summary/Summary";
 import WaterMark from "./UI/WaterMark";
 import logo from "./assets/youtubelogo.svg";
+import paypal from "./assets/paypal.png";
 
+
+function Donate() {
+  const [thanks, setThanks] = useState("Eine kleine Kaffee-Spende ♥️");
+  return (
+    <a href="https://paypal.me/peterhuer" target="_blank" className="donate" onMouseOver={() => setThanks("Danke dir mein lieber ♥️")} onMouseLeave={() => setThanks("Eine kleine Kaffee-Spende ♥️")}>
+      <img src={paypal}></img>
+      {thanks}
+    </a>
+  );
+}
 
 function deleteCookies() {
     var theCookies = document.cookie.split(';');
@@ -62,6 +73,9 @@ function App() {
             <Summary totalCrypto={totalCrypto} totalStock={totalStock}/>
             <EtfGold onSum={setTotalStock}/>
             <Crypto onSum={setTotalCrypto}/>
+          <div className="center">
+            <Donate />
+          </div>
             <div className="imprint">
                 <a onClick={() => setShowImprint(true)}>Impressum</a>
             </div>

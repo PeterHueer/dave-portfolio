@@ -153,6 +153,37 @@ body {
   margin-top: 30px;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  .donate {
+    display: flex;
+    justify-content: center;
+    color:  #253B80;
+    border: 1px solid #253B80;
+    background: white;
+    outline: none;
+    gap: 10px;
+    border-radius: 5px;
+    align-items: center;
+    padding: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    width: 20rem;
+    font-size: 0.8rem;
+    transition: opacity 0.5s, width 0.5s;
+    &:hover {
+      opacity: 1;
+      width: 25rem;
+    }
+
+    img {
+      width: 50px;
+    }
+  }
+}
+
 @keyframes bouncing {
 	0% {
 		transform: scale(0);
