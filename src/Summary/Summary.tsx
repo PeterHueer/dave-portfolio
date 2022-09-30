@@ -32,12 +32,14 @@ export default function Summary(props: {
   return (
     <Hero title="Aktueller Gesamtwert">
       <div className="card">
-        <div className="card-image">
-          <figure className="chart"></figure>
-        </div>
+        <img
+          src={profil}
+          alt="Placeholder image"
+          className="mobile-image"
+        />
         <div className="card-content overflow-hidden">
           <div className="media is-flexwrap">
-            <div className="media-left">
+            <div className="media-left only-desktop">
               <figure className="image is-128x128">
                 <img
                   src={profil}
