@@ -7,11 +7,20 @@ body {
   display: flex;
   justify-content: center;
 }
+.overflow-hidden {
+  overflow: hidden;
+}
 .app {
   display: flex;
   flex-direction: column;
   max-width: 1200px;
   width: 100%;
+  .tarmac {
+    img {
+      height: 13px;
+    }
+  }
+
   .making-of {
     display: flex;
     align-items: center;
@@ -118,12 +127,11 @@ body {
 .dollar-eye-wrapper {
   position: absolute;
   transform: scale(0);
-  left: 45px;
-  top: 30px;
+  left: 47px;
+  top: 22px;
   display: flex;
   gap: 8px;
   animation-name: bouncing;
-  animation-timing-function: cubic-bezier();
   animation-duration: 3s;
   animation-delay: 1s;
   animation-fill-mode: forwards;

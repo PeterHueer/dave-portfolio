@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import Hero from "../UI/Hero";
-import profil from "../assets/profil.jpg";
+import profil from "../assets/dave.png";
 import CountUp from "react-countup";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import tarmac from "../assets/tarmac.png"
 // Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.
 const dollarEyes = (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -35,12 +35,11 @@ export default function Summary(props: {
         <div className="card-image">
           <figure className="chart"></figure>
         </div>
-        <div className="card-content">
+        <div className="card-content overflow-hidden">
           <div className="media is-flexwrap">
             <div className="media-left">
               <figure className="image is-128x128">
                 <img
-                  className="is-rounded"
                   src={profil}
                   alt="Placeholder image"
                 />
@@ -51,8 +50,9 @@ export default function Summary(props: {
               </figure>
             </div>
             <div className="media-content">
-              <p className="title is-4">Dave</p>
-              <p className="subtitle is-6 mb-0">Youtuber und Investor</p>
+              <p className="title is-2">Dave</p>
+              <p className="subtitle is-6 mb-0">Youtuber, Investor und <a href="https://tarmac.clothing/" className="tarmac">Gründer von <img alt="tarmac logo" src={tarmac} /></a></p>
+              <div className="mt-2"></div>
               <a
                 href="https://www.youtube.com/watch?v=7NTVLxEX_fQ"
                 target="_blank"

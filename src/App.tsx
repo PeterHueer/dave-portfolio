@@ -6,7 +6,6 @@ import WaterMark from "./UI/WaterMark";
 import logo from "./assets/youtubelogo.svg";
 import paypal from "./assets/paypal.png";
 
-
 function Donate() {
   const [thanks, setThanks] = useState("Eine kleine Kaffee-Spende ♥️");
   return (
