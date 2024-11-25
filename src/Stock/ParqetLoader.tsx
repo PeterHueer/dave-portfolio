@@ -15,9 +15,11 @@ interface Performance {
     value: number;
 }
 
-interface Security {
+interface SharedAsset {
   name: string;
-  isin: string;
+  security: {
+    isin: string;    
+  }
 }
 
 interface Asset {
@@ -31,7 +33,7 @@ interface StartQuote {
 
 export interface StockItem {
   position: StockPosition;
-  security?: Security;
+  sharedAsset?: SharedAsset;
   startQuote: StartQuote;
   asset: Asset;
   performance: Performance;

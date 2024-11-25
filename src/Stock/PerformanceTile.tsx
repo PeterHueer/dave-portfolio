@@ -39,7 +39,7 @@ export default function PerformanceTile(props: {
             </figure>
           </div>
           <div className="media-content">
-            <p className="title is-6">{props.isCrypto ? cryptoNameResolver(identifier) : props.stock.security?.name}</p>
+            <p className="title is-6">{props.isCrypto ? cryptoNameResolver(identifier) : props.stock.sharedAsset?.name}</p>
             <p className="subtitle is-6">{props.isCrypto ? identifier : `ISIN: ${identifier}`}</p>
           </div>
         </div>
