@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 interface StockPosition {
   allocation: number;
@@ -10,15 +10,15 @@ interface StockPosition {
 }
 
 interface Performance {
-    gainGross: number;
-    purchaseValue: number;
-    value: number;
+  gainGross: number;
+  purchaseValue: number;
+  value: number;
 }
 
 interface SharedAsset {
   name: string;
   security: {
-    isin: string;    
+    isin: string;
   }
 }
 
@@ -42,7 +42,7 @@ export interface StockItem {
 
 export interface StockData {
   holdings: StockItem[];
-  performance: {gainGross: number};
+  performance: { gainGross: number, value: number, purchaseValue: number };
 }
 
 export const useGetStockData = () => {
@@ -56,5 +56,5 @@ export const useGetStockData = () => {
       })
       .then(setData);
   }, []);
-  return { data };
+  return {data};
 };

@@ -14,15 +14,18 @@ export default function PerformanceTile(props: {
   } = props.stock.performance;
 
   const {
-  asset: {
-    identifier
-  }, logo} = props.stock;
+    asset: {
+      identifier
+    }, logo
+  } = props.stock;
 
 
   const cryptoNameResolver = (short: string) => {
     switch (short) {
-      case "BTC": return "Bitcoin";
-      case "ETH": return "Ethereum";
+      case "BTC":
+        return "Bitcoin";
+      case "ETH":
+        return "Ethereum";
     }
   }
 
@@ -39,7 +42,8 @@ export default function PerformanceTile(props: {
             </figure>
           </div>
           <div className="media-content">
-            <p className="title is-6">{props.isCrypto ? cryptoNameResolver(identifier) : props.stock.sharedAsset?.name}</p>
+            <p
+              className="title is-6">{props.isCrypto ? cryptoNameResolver(identifier) : props.stock.sharedAsset?.name}</p>
             <p className="subtitle is-6">{props.isCrypto ? identifier : `ISIN: ${identifier}`}</p>
           </div>
         </div>
@@ -47,9 +51,10 @@ export default function PerformanceTile(props: {
         <div className="content">
           <div className="stock-data">
             <div className="pricing">
-              <span data-tip={`Einzahlungsdatum: ${new Date(props.stock.startQuote.datetime).toLocaleDateString()}`} className="stock-title tag">Eingezahlt:</span>
+              <span data-tip={`Einzahlungsdatum: ${new Date(props.stock.startQuote.datetime).toLocaleDateString()}`}
+                    className="stock-title tag">Eingezahlt:</span>
               <span>{purchaseValue.toLocaleString()}€</span>
-              <ReactTooltip />
+              <ReactTooltip/>
             </div>
             <div className="pricing">
               <span className="stock-title tag">Aktuell:</span>
@@ -65,7 +70,7 @@ export default function PerformanceTile(props: {
             >
               <CountUp
                 duration={0.8}
-                end={gainGross}
+                end={value - purchaseValue}
                 decimal=","
                 decimals={2}
                 suffix=" €"
