@@ -70,7 +70,7 @@ export default function PerformanceTile(props: {
             >
               <CountUp
                 duration={0.8}
-                end={value - purchaseValue}
+                end={gainGross}
                 decimal=","
                 decimals={2}
                 suffix=" €"

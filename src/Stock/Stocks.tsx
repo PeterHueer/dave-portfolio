@@ -8,7 +8,7 @@ export default function Stocks(props: { onSum: (sum: number) => void }) {
   const {data} = useGetStockData();
 
   useEffect(() => {
-    props.onSum(data ? data.performance.value - data.performance.purchaseValue : 0);
+    props.onSum(data?.performance.gainGross ?? 0);
   }, [data]);
 
   const isCrypto = (holding: StockItem) => holding.asset.assetType === "Crypto";

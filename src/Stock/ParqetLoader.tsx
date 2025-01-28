@@ -48,7 +48,21 @@ export interface StockData {
 export const useGetStockData = () => {
   const [data, setData] = useState<StockData>();
   useEffect(() => {
-    fetch("https://api.parqet.com/v1/portfolios/63372c07a95d112cb413d2c7")
+    fetch("https://api.parqet.com/v1/portfolios/assemble", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        portfolioIds: [
+          "63372c07a95d112cb413d2c7"
+        ],
+        holdingId: [],
+        assetTypes: [],
+        timeframe: "max"
+      })
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
